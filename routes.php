@@ -1,5 +1,6 @@
 <?php
 
-echo "<pre>";
-print_r($_ENV["POSTGRES_DB"]);
-echo "</pre>";
+// $config = require "../config.php";
+
+$router->get("/idea", "controllers/idea");
+$router->post("/test", controller: "controllers/test");
