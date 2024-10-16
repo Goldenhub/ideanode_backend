@@ -1,4 +1,4 @@
-<!-- <IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
     RewriteEngine On
 
     # If a requested file or directory exists, serve it directly
@@ -8,4 +8,4 @@
     # Otherwise, pass the request to index.php
     RewriteRule ^ index.php [L]
 
-</IfModule> -->
+</IfModule>
