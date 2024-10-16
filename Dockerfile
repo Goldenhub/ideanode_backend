@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
 
 # Enable Apache mod_rewrite and configure DirectoryIndex
 RUN a2enmod rewrite
-RUN echo "DirectoryIndex public/index.php" >> /etc/apache2/apache2.conf
+# RUN echo "DirectoryIndex public/index.php" >> /etc/apache2/apache2.conf
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-available/000-default.conf
 
 # Set the working directory in the container
 WORKDIR /var/www/html/public
