@@ -17,7 +17,8 @@ class Kernel
 
         [$controller, $method, $param] = $router->route($uri, $method);
 
-        $response = (new $controller())->$method(...$param);
+        // $response = (new $controller())->$method(...$param);
+        $response = call_user_func_array([new $controller, $method], $param);
 
         return $response;
     }
