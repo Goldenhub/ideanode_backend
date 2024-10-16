@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pgsql pdo pdo_pgsql
 
 # Enable Apache mod_rewrite and configure DirectoryIndex
-# RUN a2enmod rewrite
+RUN a2enmod rewrite
 RUN echo "DirectoryIndex index.php" >> /etc/apache2/apache2.conf
 
 # Set the working directory in the container
