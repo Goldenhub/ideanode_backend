@@ -14,12 +14,14 @@ class Response
 
     public function __construct(
         private ?string $content = '',
-        private int $status = 200,
-        private array $headers = []
+        private int $status = self::HTTP_OK,
+        private array $headers = ['Content-Type' => 'application/json']
     ) {}
 
     public function send(): void
     {
+        http_response_code($this->status);
+        // header('Content-Type: ' . $this->headers['Content-Type']);
         echo $this->content;
     }
 }

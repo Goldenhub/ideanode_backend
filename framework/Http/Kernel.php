@@ -10,7 +10,7 @@ class Kernel
     public function handle(Request $request): Response
     {
         $router = new Router();
-        include base_uri("routes");
+        include base_uri("routes/api");
 
         $uri = $request->getPathInfo();
         $method = $request->getMethod();
