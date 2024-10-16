@@ -1,8 +1,10 @@
 # Use an official PHP runtime as a parent image
 FROM php:8.1-apache
 
-# Install PHP extensions for PostgreSQL
-RUN docker-php-ext-install pgsql pdo pdo_pgsql
+# Install system dependencies, including PostgreSQL dev libraries
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    && docker-php-ext-install pgsql pdo pdo_pgsql
 
 # Set the working directory in the container
 WORKDIR /var/www/html
