@@ -1,0 +1,19 @@
+{
+  "name": "golden/ideanode",
+  "description": "An application for brainstorming on ideas",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Golden Azubuike",
+      "email": "goldenazubuike@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Golden\\Framework\\": "framework/"
+    }
+  },
+  "require": {}
+}

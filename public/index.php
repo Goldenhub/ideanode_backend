@@ -1,17 +1,22 @@
 <?php
 
-use Core\Router;
+declare(strict_types=1);
+
+use App\Router;
+use Golden\Framework\Http\Kernel;
+use Golden\Framework\Http\Request;
+use Golden\Framework\Http\Response;
 
 const BASE_URI = __DIR__ . "/" . ".." . "/";
 
-require BASE_URI . "Core/helpers.php";
+require BASE_URI . "src/helpers.php";
 
-require base_uri("Vendor/autoloader");
+require_once base_uri("vendor/autoload");
 
-$router = new Router();
-require base_uri("/routes");
+// $response = new Response(content: "Hello", status: 200, headers: []);
+$request = Request::createFromGlobals();
 
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-$method = $_SERVER['REQUEST_METHOD'];
 
-$router->route($method, $uri);
+$kernel = new Kernel();
+$response = $kernel->handle($request);
+$response->send();

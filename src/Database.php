@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace App;
 
-use Core\Response;
+use Golden\Framework\Http\Response;
 
 class Database
 {
@@ -35,7 +35,7 @@ class Database
     {
         $result = $this->stmt->fetch();
         if (!$result) {
-            abort(Response::NOT_FOUND);
+            abort(Response::HTTP_NOT_FOUND);
         }
         return $result;
     }
@@ -44,7 +44,7 @@ class Database
     {
         $result = $this->stmt->fetchALl();
         if (!$result) {
-            abort(statuscode: Response::NOT_FOUND);
+            abort(Response::HTTP_NOT_FOUND);
         }
         return $result;
     }
