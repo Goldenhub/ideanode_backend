@@ -7,14 +7,14 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pgsql pdo pdo_pgsql
 
 # Enable Apache mod_rewrite and configure DirectoryIndex
-RUN a2enmod rewrite
-RUN echo "DirectoryIndex public/index.php" >> /etc/apache2/apache2.conf
+# RUN a2enmod rewrite
+RUN echo "DirectoryIndex index.php" >> /etc/apache2/apache2.conf
 
 # Set the working directory in the container
 WORKDIR /var/www/html/public
 
 # Copy the current directory contents into the container at /var/www/html
-COPY . /var/www/html/public
+COPY . /var/www/html
 
 # Expose port 80 for the web server
 EXPOSE 80
