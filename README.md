@@ -1,6 +1,29 @@
-# ideanest_backend
+# intaspace
 
 ## A nest for idea collaboration
+
+## Overview
+
+Users can post ideas.
+The idea is displayed on the SPACE, other users can view, like and comment on the idea.
+An idea can be moved to LAB so it can be closely worked on by users who have indicated interest.
+The owner of the idea can invite users to the lab.
+An idea can only be moved to the owner's LAB from the SPACE when it has 20 or more likes.
+When it is moved to the LAB as a Pre-Build, all the users who liked it will be invited to join the Pre-Build in the owner's LAB. They can accept or ignore.
+ONLY users who accept will be able to see activities going on with that idea.
+
+## Activities that can be performed includes
+
+- Scheduling meetings on calendar (requires google signup)
+- Upload documents and images
+- Create task
+- Assign task to Pre-Build members
+- Change task status
+- Reward task completion (wallet system or built-in reward system)
+- Remove a member
+- Delete a pre-build from the LAB
+- Restore a Pre-Build (before 30 days of deletion)
+- Leave a Lab
 
 ### Database Tables
 
@@ -26,8 +49,12 @@
 
 ### Technologies
 
-- NestJS
-- TypeScript
+- PHP
 - pgSQL
-- Prisma ORM
+- Eloquent ORM
+- PHPUnit
 - Redis
+- AWS (SNS, SES)
+- NextJS
+- Shadcn/TailwindCSS
+- Redux Toolkit

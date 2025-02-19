@@ -21,7 +21,7 @@ class Response
     public function send(): void
     {
         http_response_code($this->status);
-        // header('Content-Type: ' . $this->headers['Content-Type']);
+        header('Content-Type: ' . $this->headers['Content-Type']);
         echo $this->content;
     }
 }
