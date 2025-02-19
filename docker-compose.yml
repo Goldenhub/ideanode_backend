@@ -1,0 +1,52 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    networks:
+      - monorepo-network
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/var/www/html/public
+    depends_on:
+      - db
+    env_file:
+      - .env
+    networks:
+      - monorepo-network
+
+  db: #postgres
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+    env_file:
+      - .env
+    networks:
+      - monorepo-network
+
+volumes:
+  postgres_data:
+
+networks:
+  monorepo-network:
+    driver: bridge
